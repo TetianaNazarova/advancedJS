@@ -46,7 +46,3 @@ hashTable.set("John", 90);
 hashTable.set("Alice", 95);
 hashTable.set("Bob", 87);
 hashTable.set("Tanya", 60);
-
-console.log(hashTable.get("Tanya"));
-
-console.log("hashTable", hashTable);
