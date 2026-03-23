@@ -27,22 +27,20 @@ class StackQueue {
 
     isBalanced(arrOfBrackets) {
         const brackets = {
-            "(": ")",
-            "{": "}",
-            "[": "]",
+            ")": "(",
+            "}": "{",
+            "]": "[",
         }
 
-        for (let i = 0; i < arrOfBrackets.length; i++) {
-            if (arrOfBrackets[i] === brackets["("] || arrOfBrackets[i] === "{" || arrOfBrackets[i] === "[") {
-                this.add(arrOfBrackets[i]);
-            } else if (arrOfBrackets[i] === ")" && this.peek() === "(") {
-                this.remove()
-            }  else if (arrOfBrackets[i] === "}" && this.peek() === "{") {
-                this.remove()
-            }  else if (arrOfBrackets[i] === "]" && this.peek() === "[") {
-                this.remove()
+        for (let char of arrOfBrackets) {
+            if (char in brackets) {
+                if (brackets[char] === this.peek()) {
+                    this.remove();
+                } else {
+                    return false;
+                }
             } else {
-                return false
+                this.add(char);
             }
         }
         return this.isEmpty();
