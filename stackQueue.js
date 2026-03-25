@@ -1,7 +1,5 @@
-class StackQueue {
+class Stack {
     constructor() {
-        this.head = null;
-        this.tail = null;
         this.size = 0;
         this.stack = [];
     }
@@ -47,6 +45,50 @@ class StackQueue {
     }
 }
 
-const myStack = new StackQueue();
+const myStack = new Stack();
 myStack.isBalanced(["}", "{", "[", "]"]);
 myStack.isBalanced(["[", "]"]);
+
+
+class Queue {
+    constructor() {
+        this.elements = [];
+        this.head = null;
+        this.tail = null;
+
+    }
+
+    enqueue(element) {
+        this.elements[this.tail] = element;
+        this.tail++;
+    }
+
+    dequeue() {
+        const item = this.elements[this.head];
+        delete this.elements[this.head];
+        this.head++;
+        return item;
+    }
+
+    peek() {
+        return this.elements[this.head];
+    }
+
+    get length() {
+       return this.tail - this.head;
+    }
+
+    get isEmpty() {
+        return this.length === 0;
+    }
+}
+
+const myQueue = new Queue();
+
+for (let i = 0; i <= 10; i++) {
+    myQueue.enqueue(i);
+}
+
+while (!myQueue.isEmpty) {
+    myQueue.dequeue();
+}
